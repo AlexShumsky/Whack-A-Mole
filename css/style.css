@@ -1,1 +1,73 @@
 @import url("nullstyle.css");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+body {
+	height: 100vh;
+	width: 100vw;
+
+	overflow: hidden;
+	font-family: "Amatic SC";
+	background: rgba(240, 162, 17, 0.884);
+}
+h1 {
+	font-size: 70px;
+}
+.wrapper {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
+.start-b {
+	align-self: flex-end;
+	margin-right: 20px;
+	border-radius: 5px;
+	padding: 0px 5px;
+	font-size: 35px;
+}
+.game {
+	flex: 1 1 100%;
+	padding: 20px;
+	width: 70%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.hole {
+	flex: 0 1 33%;
+	position: relative;
+	overflow: hidden;
+}
+.hole::after {
+	content: "";
+	position: absolute;
+	overflow: hidden;
+	left: 10%;
+	bottom: 0%;
+	width: 80%;
+	height: 20%;
+	background: url("../assets/dirt.svg") top / cover no-repeat;
+}
+.mole {
+	position: absolute;
+	left: 27%;
+	bottom: -80%;
+	height: 80%;
+	width: 46%;
+	background: url("../assets/mole.svg") top / cover no-repeat;
+}
+.hole1 {
+}
+.hole2 {
+}
+.hole3 {
+}
+.hole4 {
+}
+.hole5 {
+}
+.hole6 {
+}

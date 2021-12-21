@@ -4,6 +4,7 @@ const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const score = document.querySelector('.top-score span');
 const difficulties = document.querySelectorAll('.difficulty');
+const cursor = document.querySelector('.cursor');
 const hammerHitSound = document.querySelector('.hammer-hit');
 const mainTheme = document.querySelector('.main-theme');
 const difficultiesList = {
@@ -22,6 +23,7 @@ moles.forEach(mole => mole.addEventListener('click', hitMole));
 difficulties.forEach(difficulty => difficulty.addEventListener('click', changeDifficulty))
 window.addEventListener('load', changeUserScore);
 window.addEventListener('load', getLocalUserDifficulty);
+window.addEventListener('load', showCursore);
 /**START GAME**/
 function startGame() {
 	disableStartButton();
@@ -37,7 +39,6 @@ function initGame() {
 
 	setTimeout(() => {
 		stopSound(mainTheme);
-		showGreetings();
 		checkStorage();
 		changeUserScore();
 		finishGame();
@@ -74,13 +75,6 @@ function hitMole() {
 		showCurrentPoints();
 		this.parentNode.classList.remove('up');
 	}
-}
-/**GREETINGS**/
-function showGreetings() {
-	let letter = (!counter) ? `Ups.. Seems like it's realy hard for you. Try another difficulty` :
-		(counter <= 4) ? `Your result is ${counter}! Definitely you can better` :
-			(counter <= 8) ? `Your result is ${counter}! Impressive, don't you won't to show us more?` : `WOW! Your result is ${counter}! You a ROCK ; ) Try another difficulty`;
-	alert(letter);
 }
 /**STORAGE**/
 function checkStorage() {
@@ -146,3 +140,19 @@ function playSound(sound) {
 function stopSound(sound) {
 	sound.pause();
 }
+function showCursore() {
+	window.addEventListener('mousemove', (e) => {
+		cursor.style.top = (e.pageY - 25) + 'px';
+		cursor.style.left = (e.pageX - 25) + 'px';
+	})
+
+	window.addEventListener('click', () => {
+		cursor.classList.add('expand');
+		cursor.style.transition = '.1s';
+		cursor.addEventListener('transitionend', () => {
+			cursor.classList.remove('expand');
+			cursor.style.transition = '0';
+		});
+	});
+}
+

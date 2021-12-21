@@ -4,6 +4,8 @@ const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const score = document.querySelector('.top-score span');
 const difficulties = document.querySelectorAll('.difficulty');
+const hammerHitSound = document.querySelector('.hammer-hit');
+const mainTheme = document.querySelector('.main-theme');
 const difficultiesList = {
 	noob: [500, 1600],
 	normal: [400, 1400],
@@ -23,6 +25,7 @@ window.addEventListener('load', getLocalUserDifficulty);
 /**START GAME**/
 function startGame() {
 	disableStartButton();
+	playSound(mainTheme);
 	initGame();
 	showCurrentPoints();
 	showMoles();
@@ -33,6 +36,7 @@ function initGame() {
 	isPlay = true;
 
 	setTimeout(() => {
+		stopSound(mainTheme);
 		showGreetings();
 		checkStorage();
 		changeUserScore();
@@ -66,6 +70,7 @@ function showMoles() {
 function hitMole() {
 	if (this.parentNode.classList.contains('up')) {
 		counter++;
+		playSound(hammerHitSound);
 		showCurrentPoints();
 		this.parentNode.classList.remove('up');
 	}
@@ -134,3 +139,10 @@ function disableStartButton() {
 function enableStartButton() {
 	startButton.addEventListener('click', startGame);
 };
+function playSound(sound) {
+	sound.currentTime = 0;
+	sound.play();
+}
+function stopSound(sound) {
+	sound.pause();
+}

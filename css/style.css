@@ -45,7 +45,11 @@ h1 span {
 	width: 150px;
 	border: 1px solid #000;
 }
-.difficulty {
+.top-score {
+	font-size: 30px;
+	position: absolute;
+	top: 20px;
+	left: 20px;
 }
 .menu li {
 	padding: 0px 35px;
